@@ -23,8 +23,8 @@ const getAbout = async (req, res) => {
     }
 
     if (!about) {
-      // Return default data if no about found
-      const defaultAbout = {
+      // Create a default about if none exists
+      const defaultAboutData = {
         hero: {
           backgroundImage: "/assets/img/home-01/hero/dentist-2.jpg",
           subtitle: "Professional dental care",
@@ -57,6 +57,13 @@ const getAbout = async (req, res) => {
         }
       };
 
+      const defaultAbout = new About({
+        ...defaultAboutData,
+        companyId: companyId || "default",
+        isActive: true
+      });
+      
+      await defaultAbout.save();
       return res.status(StatusCodes.OK).json({ about: defaultAbout });
     }
     

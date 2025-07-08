@@ -23,8 +23,8 @@ const getContact = async (req, res) => {
     }
 
     if (!contact) {
-      // Return default data if no contact found
-      const defaultContact = {
+      // Create a default contact if none exists
+      const defaultContactData = {
         hero: {
           backgroundImage: "/assets/img/home-01/team/team-details-bg.png",
           subtitle: "Liko Studio",
@@ -84,6 +84,13 @@ const getContact = async (req, res) => {
         }
       };
 
+      const defaultContact = new Contact({
+        ...defaultContactData,
+        companyId: companyId || "default",
+        isActive: true
+      });
+      
+      await defaultContact.save();
       return res.status(StatusCodes.OK).json({ contact: defaultContact });
     }
     
