@@ -3,7 +3,6 @@ const Token = require("../models/Token");
 const { StatusCodes } = require("http-status-codes");
 const CustomError = require("../errors");
 const { generateToken } = require("../services/token.service");
-const bcrypt = require('bcrypt');
 
 //Email
 const verifyEmail = async (req, res) => {
