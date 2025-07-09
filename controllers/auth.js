@@ -135,7 +135,7 @@ const login = async (req, res, next) => {
         "Lütfen e-posta adresinizi ve şifrenizi girin"
       );
     }
-    const user = await User.findOne({ email }).select('auth profile name email role status companyId');
+    const user = await User.findOne({ email }).select('auth name email role status companyId');
 
     if (!user) {
       throw new CustomError.UnauthenticatedError(
@@ -189,7 +189,6 @@ const login = async (req, res, next) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        picture: user.profile.picture,
         role: user.role,
         companyId: user.companyId,
         token: accessToken,
