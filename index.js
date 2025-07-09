@@ -42,6 +42,7 @@ const footerRouter = require("./routers/footer");
 const formRouter = require("./routers/form");
 const formSubmissionRouter = require("./routers/formSubmission");
 const policyRouter = require("./routers/policy");
+const seoRouter = require("./routers/seo");
 
 //midlleware
 const notFoundMiddleware = require("./middleware/not-found");
@@ -68,6 +69,7 @@ app.use("/v1/footer", footerRouter);
 app.use("/v1/form", formRouter);
 app.use("/v1/form-submissions", formSubmissionRouter);
 app.use("/v1/policies", policyRouter);
+app.use("/v1/seo", seoRouter);
 
 app.use(notFoundMiddleware);
 app.use(erorHandlerMiddleware);
